@@ -75,3 +75,13 @@ def index_page(page):
     except TimeoutException:
         index_page(page)
 
+MAX_PAGE = 100
+def main():
+    """
+    遍历每一页
+    :return:
+    """
+    for i in range(1, MAX_PAGE + 1)
+        index_page(i)
+    browser.close()
+
