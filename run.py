@@ -100,3 +100,4 @@ action.move_by_offset(298, 0)  # 需要滑动的坐标
 action.release().perform()  # 释放鼠标
 
 time.sleep(1)
+
