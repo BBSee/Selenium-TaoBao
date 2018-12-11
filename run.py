@@ -4,18 +4,41 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from urllib.parse import quote
+from pyquery import PyQuery
 
 
 browser = webdriver.chrome()
 wait = WebDriverWait(browser, 10)
 KEYWORD = 'ipad'
 
-def index_page(page):
-    '''
-    抓取索引页
-    :param page: 页码
+
+def get_products():
+    """
+    提取商品数据
     :return:
-    '''
+    """
+    html = browser.page_source
+    doc = PyQuery(html)
+    items = doc('#mainsrp-itemlist .items .item').items()
+    for item in items:
+        prodcut = {
+            'image': item.find('.pic .img').attr('data-src'),
+            'price': item.find('.price').text(),
+            'deal': item.find('.deal-cnt').text(),
+            'title': item.find('.title').text(),
+            'shop': item.find('.shop').text(),
+            'location': item.find('.location').text()
+        }
+        print(prodcut)
+        save_to_mongo(prodcut)
+
+
+def index_page(page):
+    """
+    抓取索引页
+    :param page:
+    :return:
+    """
     print('正在爬取第:', page, "页")
     try:
         url = 'https://s.taobao.com/search?q=' + quote(KEYWORD)
