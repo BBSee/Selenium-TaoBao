@@ -8,3 +8,5 @@ KEYWORD = 'ipad'
 
 # 最大页数
 MAX_PAGE = 100
+
+SERVICE_ARGS = ['--load-images=false', '--disk-cache=true']
