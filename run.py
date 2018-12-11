@@ -1,3 +1,5 @@
+import pymongo
+
 from selenium import webdriver
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support import expected_conditions as EC
@@ -10,6 +12,24 @@ from pyquery import PyQuery
 browser = webdriver.chrome()
 wait = WebDriverWait(browser, 10)
 KEYWORD = 'ipad'
+
+MONGO_URL = 'localhost'
+MONGO_DB = 'taobao'
+MONGO_COLLECTION = 'products'
+client = pymongo.MongoClient(MONGO_URL)
+db = client[MONGO_DB]
+
+def save_to_mongo(result):
+    """
+    保存结果到MongoDb数据库中
+    :param result: 结果
+    :return:
+    """
+    try:
+        if db[MONGO_COLLECTION].insert(result):
+            print('存储到MongoDB成功')
+    except Exception:
+        print('存储到MongoDB失败')
 
 
 def get_products():
