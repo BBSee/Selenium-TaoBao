@@ -5,3 +5,6 @@ MONGO_COLLECTION = 'products'
 
 # 搜索商品
 KEYWORD = 'ipad'
+
+# 最大页数
+MAX_PAGE = 100
