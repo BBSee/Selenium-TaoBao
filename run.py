@@ -81,7 +81,10 @@ def main():
     遍历每一页
     :return:
     """
-    for i in range(1, MAX_PAGE + 1)
+    for i in range(1, MAX_PAGE + 1):
         index_page(i)
     browser.close()
+
+if __name__ == '__main__':
+    main()
 
