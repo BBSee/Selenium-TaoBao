@@ -90,14 +90,14 @@ if __name__ == '__main__':
 
 
 
-from selenium.webdriver import ActionChains
-
-action = ActionChains(driver)
-
-source = driver.find_element_by_xpath("//*[@id='nc_1_n1t']/span")  # 需要滑动的元素
-action.click_and_hold(source).perform()   # 鼠标左键按下不放
-action.move_by_offset(298, 0)  # 需要滑动的坐标
-action.release().perform()  # 释放鼠标
-
-time.sleep(1)
+# from selenium.webdriver import ActionChains
+#
+# action = ActionChains(driver)
+#
+# source = driver.find_element_by_xpath("//*[@id='nc_1_n1t']/span")  # 需要滑动的元素
+# action.click_and_hold(source).perform()   # 鼠标左键按下不放
+# action.move_by_offset(298, 0)  # 需要滑动的坐标
+# action.release().perform()  # 释放鼠标
+#
+# time.sleep(1)
 
